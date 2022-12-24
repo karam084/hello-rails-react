@@ -1,12 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit';
-import logger from 'redux-logger';
-import greetingReducer from './reducer';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import greetingsReducer from './reducer';
 
-const store = configureStore({
-    reducer: {
-        greetingReducer,
-    },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-});
+const rootReducer = combineReducers({ greetings: greetingsReducer });
+const store = configureStore({ reducer: rootReducer})
 
 export default store;
